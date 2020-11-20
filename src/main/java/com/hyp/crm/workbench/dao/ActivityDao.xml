@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hyp.crm.workbench.dao.ActivityDao">
+    <select id="detail" resultType="Activity">
+        select a.id,
+               a.name,
+               u.name as owner,
+               a.startDate,
+               a.endDate,
+               a.cost,
+               a.description,
+               a.createTime,
+               a.createBy,
+               a.editTime,
+               a.editBy
+        from crm.tbl_activity a
+                 join crm.tbl_user u
+                      on a.owner = u.id
+        where a.id = #{id};
+
+
+    </select>
+
+
+    <update id="update">
+        update crm.tbl_activity
+        set owner=#{owner},
+            name=#{name},
+            startDate=#{startDate},
+            endDate=#{endDate},
+            cost=#{cost},
+            description=#{description},
+            editTime=#{editTime},
+            editBy=#{editBy}
+        where id = #{id};
+
+
+    </update>
+
+
+    <select id="getById" resultType="Activity">
+
+        select *
+        from crm.tbl_activity
+        where id = #{id};
+
+    </select>
+    <delete id="delete">
+
+        delete from crm.tbl_activity
+        where id in
+        <foreach collection="array" item="aid" open="(" close=")" separator=",">
+            #{aid}
+
+        </foreach>
+
+
+    </delete>
+    <insert id="save">
+        insert into crm.tbl_activity(id, owner, name, startDate, endDate, cost, description, createTime, createBy)
+
+
+        values (#{id},
+                #{owner},
+                #{name},
+                #{startDate},
+                #{endDate},
+                #{cost},
+                #{description},
+                #{createTime},
+                #{createBy});
+
+
+    </insert>
+    <select id="getTotalByCondition" parameterType="map" resultType="int">
+
+        select count(*)
+        from crm.tbl_activity as a
+        join crm.tbl_user as u
+        on a.owner = u.id
+
+        <where>
+            <if test="name!=null and name!=''">
+
+                a.name like '%' #{name} '%'
+            </if>
+            <if test="owner!=null and owner!=''">
+                and u.name like '%' #{owner} '%'
+
+            </if>
+            <if test="startDate!=null and startDate!=''">
+                and a.starDate &gt; #{startDate}
+            </if>
+            <if test="endDate!=null and endDate!=''">
+                and a.endDate &lt; #{endDate}
+            </if>
+        </where>
+
+
+    </select>
+    <select id="getActivityListByCondition" parameterType="map" resultType="Activity">
+
+        select a.id,
+        a.name,
+        u.name as owner,
+        a.startDate,
+        a.endDate
+        from crm.tbl_activity as a
+        join crm.tbl_user as u
+        on a.owner = u.id
+        <where>
+            <if test="name!=null and name!=''">
+
+                a.name like '%' #{name} '%'
+            </if>
+            <if test="owner!=null and owner!=''">
+                and u.name like '%' #{owner} '%'
+
+            </if>
+            <if test="startDate!=null and startDate!=''">
+                and a.starDate &gt; #{startDate}
+            </if>
+            <if test="endDate!=null and endDate!=''">
+                and a.endDate &lt; #{endDate}
+            </if>
+        </where>
+        order by a.createTime desc
+        limit #{skipCount},#{pageSize};
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
