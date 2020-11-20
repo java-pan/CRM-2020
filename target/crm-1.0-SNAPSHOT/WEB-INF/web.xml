@@ -3,9 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-
-
-
   <display-name>crm</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -37,6 +34,12 @@
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>*.do</url-pattern>
   </filter-mapping>
+  <listener>
+    <listener-class>com.hyp.crm.web.listener.SysInitListener</listener-class>
+  </listener>
+  
+  
+  
   <!--用户控制器-->
   <servlet>
     <servlet-name>UserController</servlet-name>

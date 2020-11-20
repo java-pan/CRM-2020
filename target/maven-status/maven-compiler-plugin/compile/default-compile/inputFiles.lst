@@ -42,6 +42,7 @@ F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\h
 F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\hyp\crm\settings\dao\DicTypeDao.java
 F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\hyp\crm\workbench\domain\ClueActivityRelation.java
 F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\hyp\crm\utils\TransactionInvocationHandler.java
+F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\hyp\crm\web\listener\SysInitListener.java
 F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\hyp\crm\workbench\dao\ActivityDao.java
 F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\hyp\crm\settings\domain\DicType.java
 F:\javaSE_atguigu\AtguiguiIDEAworkspeace\workspaceForCrm\crm\src\main\java\com\hyp\crm\workbench\web\controller\ActivityController.java

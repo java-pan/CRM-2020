@@ -43,6 +43,7 @@ com\hyp\crm\utils\SqlSessionUtil.class
 com\hyp\crm\workbench\domain\ContactsActivityRelation.class
 com\hyp\crm\settings\domain\DicType.class
 com\hyp\crm\settings\service\UserService.class
+com\hyp\crm\web\listener\SysInitListener.class
 com\hyp\crm\workbench\dao\ActivityRemarkDao.class
 com\hyp\crm\settings\dao\UserDao.class
 com\hyp\crm\utils\DateTimeUtil.class
