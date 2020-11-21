@@ -23,6 +23,12 @@ public class ActivityServiceImpl implements ActivityService {
     private ActivityRemarkDao activityRemarkDao = SqlSessionUtil.getSqlSession().getMapper(ActivityRemarkDao.class);
     private UserDao userDao= SqlSessionUtil.getSqlSession().getMapper(UserDao.class);
 
+    public List<Activity> getActivityListByClueId(String clueId) {
+        List<Activity> aList =  activityDao.getActivityListByClueId(clueId);
+
+        return aList;
+    }
+
     public boolean updateRemark(ActivityRemark ar) {
         boolean flag = true;
         int count = activityRemarkDao.updateRemark(ar);
