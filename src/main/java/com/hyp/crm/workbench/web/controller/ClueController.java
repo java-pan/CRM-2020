@@ -45,7 +45,46 @@ public class ClueController extends HttpServlet {
             detail(request,response);
         }else if ("/workbench/clue/getActivityListByClueId.do".equals(path)){
             getActivityListByClueId(request,response);
+        }else if ("/workbench/clue/deleteActivityById.do".equals(path)){
+            deleteActivityById(request,response);
+        }else if ("/workbench/clue/getActivityListByNameAndNotByClueId.do".equals(path)){
+            getActivityListByNameAndNotByClueId(request,response);
+        }else if ("/workbench/clue/bund.do".equals(path)){
+            bund(request,response);
         }
+    }
+
+    private void bund(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("进入关联市场活动的参数");
+        String cid = request.getParameter("cid");
+        String aids[] = request.getParameterValues("aid");
+        ClueService cs = (ClueService) ServiceFactory.getService(new ClueServiceImpl());
+        boolean flag = cs.bund(cid,aids);
+        PrintJson.printJsonFlag(response,flag);
+
+    }
+
+    private void getActivityListByNameAndNotByClueId(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("查询市场活动列表(根据名称模糊查+排除已经关联指定线索的列表)");
+        String clueId = request.getParameter("clueId");
+        String aname = request.getParameter("aname");
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("clueId",clueId);
+        map.put("aname",aname);
+        ActivityService as = (ActivityService) ServiceFactory.getService(new ActivityServiceImpl());
+        List<Activity> aList = as.getActivityListByNameAndNotByClueId(map);
+        PrintJson.printJsonObj(response,aList);
+
+
+    }
+
+    private void deleteActivityById(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("进入解除关联的方法");
+        String id = request.getParameter("id");
+        ClueService cs = (ClueService) ServiceFactory.getService(new ClueServiceImpl());
+        boolean flag = cs.deleteActivityById(id);
+        PrintJson.printJsonFlag(response,flag);
+
     }
 
     private void getActivityListByClueId(HttpServletRequest request, HttpServletResponse response) {

@@ -13,4 +13,8 @@ public interface ClueService {
     Clue detail(String id);
 
 
+    boolean deleteActivityById(String id);
+
+    boolean bund(String cid, String[] aids);
+
 }

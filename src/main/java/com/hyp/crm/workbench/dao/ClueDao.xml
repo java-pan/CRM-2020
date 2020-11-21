@@ -4,6 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hyp.crm.workbench.dao.ClueDao">
+    <delete id="deleteActivityById" >
+        delete from crm.tbl_clue_activity_relation
+where id = #{id};
+
+
+    </delete>
 
 
     <select id="detail" resultType="Clue">

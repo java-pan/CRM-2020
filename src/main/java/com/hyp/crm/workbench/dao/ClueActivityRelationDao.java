@@ -4,6 +4,6 @@ import com.hyp.crm.workbench.domain.ClueActivityRelation;
 
 public interface ClueActivityRelationDao {
 
-	
 
+    int bund(ClueActivityRelation car);
 }
