@@ -2,6 +2,7 @@ package com.hyp.crm.workbench.service;
 
 import com.hyp.crm.workbench.domain.Activity;
 import com.hyp.crm.workbench.domain.Clue;
+import com.hyp.crm.workbench.domain.Tran;
 
 /**
  * @author HYP
@@ -17,4 +18,6 @@ public interface ClueService {
 
     boolean bund(String cid, String[] aids);
 
+
+    boolean convert(String clueId, Tran t, String createBy);
 }

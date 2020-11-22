@@ -4,6 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hyp.crm.workbench.dao.CustomerRemarkDao">
+    <insert id="save">
+        insert into crm.tbl_customer_remark(id,
+                                            noteContent,
+                                            createTime,
+                                            createBy,
+                                            editFlag,
+                                            customerId)
+        VALUES (#{id},
+                #{noteContent},
+                #{createTime},
+                #{createBy},
+                #{editFlag},
+                #{customerId})
+
+
+    </insert>
 	
   	
 </mapper>
